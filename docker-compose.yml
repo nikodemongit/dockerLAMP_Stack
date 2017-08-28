@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+
+  php:
+    image: moj_phpapache4
+    ports:
+      - 81:80
+volumes:
+    mysqlvolume:
